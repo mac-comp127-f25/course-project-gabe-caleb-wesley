@@ -36,6 +36,5 @@ public class Horse {
         speed *= interactable.speedChange;
         interactable.getGraphic().setFillColor(Color.WHITE);
         interactable.getGraphic().setStrokeColor(Color.WHITE);
-        System.out.println("Interaction! " + interactable.speedChange);
     }
 }

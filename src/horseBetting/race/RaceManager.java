@@ -1,7 +1,6 @@
 package horseBetting.race;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RaceManager {
     private ArrayList<Lane> lanes;
