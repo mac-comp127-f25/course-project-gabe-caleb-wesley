@@ -1,7 +1,10 @@
 package horseBetting.race;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Random;
+
+import edu.macalester.graphics.Line;
 
 import horseBetting.MainGame;
 
@@ -9,11 +12,14 @@ public class Lane {
     private Random rand = new Random();
 
     private Horse horse;
+    private Line divider;
     private HashMap<Double, Interactable> interactables = new HashMap<Double, Interactable>();
 
     public Lane(int index) {
-        double height = (MainGame.CANVAS_HEIGHT*1.0/RaceManager.numLanes)*(index+0.5);
+        double height = (400/RaceManager.numLanes)*(index+0.5);
         horse = new Horse(height);
+        divider = new Line(0, height + 20, 700, height + 20);
+        divider.setStrokeColor(Color.WHITE);
 
         double interactableProgress = 0;
         for (int i = 0; i < 3; i++) {
@@ -45,6 +51,10 @@ public class Lane {
 
     public Horse getHorse() {
         return horse;
+    }
+
+    public Line getDivider() {
+        return divider;
     }
 
     public HashMap<Double, Interactable> getInteractables() {
