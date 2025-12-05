@@ -17,7 +17,7 @@ public class MainGame {
                 canvas.add(interactable.getGraphic());
             }
         }
-
+        
         canvas.animate(() -> {
             Interactable found = race.runFrame();
             if (found != null) {
