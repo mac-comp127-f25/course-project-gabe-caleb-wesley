@@ -36,4 +36,8 @@ public class Gambler {
     public double getMoney() {
         return money;
     }
+
+    public double getBet() {
+        return bet;
+    }
 }
