@@ -6,6 +6,7 @@ import horseBetting.MainGame;
 
 public class RaceManager {
     private ArrayList<Lane> lanes;
+    private Horse winner = null;
     public static int numLanes = 10;
     public static final int RACE_WIDTH = MainGame.CANVAS_WIDTH - 100;
     public static final int RACE_HEIGHT = MainGame.CANVAS_HEIGHT - 100;
@@ -25,6 +26,9 @@ public class RaceManager {
                 if (hit != null) {
                     found = hit;
                 }
+                if (winner == null) {
+                    winner = lane.getHorse();
+                }
             }
         }
         return found;
@@ -32,5 +36,9 @@ public class RaceManager {
 
     public ArrayList<Lane> getLanes() {
         return lanes;
+    }
+
+    public Horse getWinner() {
+        return winner;
     }
 }
