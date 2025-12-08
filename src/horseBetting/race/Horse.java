@@ -15,7 +15,7 @@ public class Horse {
         speed = Utils.halfToOneRandomDouble() * 0.02;
         this.height = height;
         graphic = new Image("horse.png");
-        graphic.setPosition(0, height);
+        graphic.setPosition(0, height-20);
         graphic.setMaxWidth(40);
     }
 
@@ -34,7 +34,7 @@ public class Horse {
     public void move(double dt) {
         double displacement = speed * dt;
         progress += displacement;
-        graphic.setCenter(progress * MainGame.CANVAS_WIDTH, height);
+        graphic.setCenter(progress * (RaceManager.RACE_WIDTH - 40) + 20, height);
     }
 
     public void interact(Interactable interactable) {

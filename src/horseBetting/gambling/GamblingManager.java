@@ -34,7 +34,7 @@ public class GamblingManager {
         odds.clear();
         for (Lane lane : lanes) {
             double speed = lane.getHorse().getSpeed();
-            odds.add(Math.round((1.2 + (6.8/range)*(speed-min)) * 10)/10.0);
+            odds.add(Math.round((8.0 - (6.8/range)*(speed-min)) * 10)/10.0);
         }
     }
 

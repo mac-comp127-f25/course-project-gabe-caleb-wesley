@@ -8,8 +8,8 @@ public class RaceManager {
     private ArrayList<Lane> lanes;
     private Horse winner = null;
     public static int numLanes = 10;
-    public static final int RACE_WIDTH = MainGame.CANVAS_WIDTH - 100;
-    public static final int RACE_HEIGHT = MainGame.CANVAS_HEIGHT - 100;
+    public static final int RACE_WIDTH = MainGame.CANVAS_WIDTH - 20;
+    public static final int RACE_HEIGHT = MainGame.CANVAS_HEIGHT - 70;
     
     public RaceManager() {
         lanes = new ArrayList<>();
@@ -26,6 +26,7 @@ public class RaceManager {
                 if (hit != null) {
                     found = hit;
                 }
+            } else {
                 if (winner == null) {
                     winner = lane.getHorse();
                 }
