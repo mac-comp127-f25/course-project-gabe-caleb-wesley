@@ -34,23 +34,12 @@ public class GamblingManagerTest {
     }
 
     @Test
-    void oddsAreEquallySpacedAroundZero() {
+    void oddsAreBetweenDesiredRange() {
         gamblingManager.formatOdds(race.getLanes());
         Double max = Collections.max(gamblingManager.getOdds());
         Double min = Collections.min(gamblingManager.getOdds());
-        assertEquals(0.0, max + min, 0.1);
-    }
-
-    @Test
-    void oddsAreOnTheOrderOfHundreds() {
-        gamblingManager.formatOdds(race.getLanes());
-        Double max = Collections.max(gamblingManager.getOdds());
-        Double min = Collections.min(gamblingManager.getOdds());
-        for (Double odds : gamblingManager.getOdds()) {
-            assertTrue(Math.abs(odds/1000) < 1);
-        }
-        assertTrue(max/100 > 1);
-        assertTrue(min/100 < -1);
+        assertEquals(1.2, min, 0.001);
+        assertEquals(8.0, max, 0.001);
     }
 
     @Test
@@ -60,7 +49,7 @@ public class GamblingManagerTest {
         int indexOfFavorite = gamblingManager.getOdds().indexOf(min);
         Horse favorite = race.getLanes().get(indexOfFavorite).getHorse();
 
-        bet.setText(String.valueOf(Math.abs(min)));
+        bet.setText(String.valueOf(100/1.2));
         horse.setText(String.valueOf(indexOfFavorite + 1));
         gamblingManager.updateGambler(bet, horse, race.getLanes());
 
@@ -76,7 +65,7 @@ public class GamblingManagerTest {
         int indexOfUnderdog = gamblingManager.getOdds().indexOf(max);
         Horse underdog = race.getLanes().get(indexOfUnderdog).getHorse();
 
-        bet.setText(String.valueOf(100/max*100));
+        bet.setText(String.valueOf(100/8.0));
         horse.setText(String.valueOf(indexOfUnderdog + 1));
         gamblingManager.updateGambler(bet, horse, race.getLanes());
 

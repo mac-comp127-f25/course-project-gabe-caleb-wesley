@@ -29,13 +29,12 @@ public class GamblingManager {
             max = (speed > max) ? speed : max;
             min = (speed < min) ? speed : min;
         }
-        double range = (max-min)*1000/0.02;
+        double range = max-min;
 
         odds.clear();
         for (Lane lane : lanes) {
             double speed = lane.getHorse().getSpeed();
-            double betterThanWorst = (speed - min)/(max-min);
-            odds.add(range/2 - (range*betterThanWorst));
+            odds.add(Math.round((1.2 + (6.8/range)*(speed-min)) * 10)/10.0);
         }
     }
 
@@ -49,6 +48,8 @@ public class GamblingManager {
             gambler.setHorse(lanes.get(Integer.parseInt(horse.getText()) - 1).getHorse());
         } catch (NumberFormatException e) {
 
+        } catch (IndexOutOfBoundsException e) {
+
         }
     }
 
@@ -61,13 +62,7 @@ public class GamblingManager {
                 }
                 index++;
             }
-            if (odds.get(index) > 0) {
-                // If I bet 100 on a +600, I get 600 back
-                gambler.addMoney(gambler.getBet() * (odds.get(index)/100));
-            } else {
-                // If I bet 600 on a -600, I get 100 back
-                gambler.addMoney(gambler.getBet()/Math.abs(odds.get(index))*100);
-            }
+            gambler.addMoney(odds.get(index) * gambler.getBet());
         } else {
             gambler.addMoney(-gambler.getBet());
         }
