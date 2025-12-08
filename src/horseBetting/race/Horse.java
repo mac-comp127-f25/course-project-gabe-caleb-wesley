@@ -27,6 +27,10 @@ public class Horse {
         return graphic;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
     public void move(double dt) {
         double displacement = speed * dt;
         progress += displacement;

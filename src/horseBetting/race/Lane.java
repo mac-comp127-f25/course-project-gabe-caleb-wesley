@@ -16,7 +16,7 @@ public class Lane {
     private HashMap<Double, Interactable> interactables = new HashMap<Double, Interactable>();
 
     public Lane(int index) {
-        double height = (400/RaceManager.numLanes)*(index+0.5);
+        double height = (RaceManager.RACE_HEIGHT/RaceManager.numLanes)*(index+0.5);
         horse = new Horse(height);
         divider = new Line(0, height + 20, 700, height + 20);
         divider.setStrokeColor(Color.WHITE);
