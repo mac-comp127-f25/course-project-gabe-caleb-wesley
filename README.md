@@ -48,5 +48,10 @@ Employ text fields and buttons to gamble
 Create logic for tracking gambling X
     Make odds follow x:1 rule where favorite gets 1.2:1 and underdog gets 8:1.
 Make the background of horses reflect their speed
-Add numbers to lanes
 Fix bug where interactables sometimes don't dissappear or leave hole in the background
+Fix OOB errors on text input
+Maybe: logic for losing if you go below $0
+Maybe: prevent overlapping interactables
+Maybe: add comments/javadoc for readability (not sure if/how much Paul wants this)
+Maybe: add extra lanes and/or lengthen race, if it's too easy
+

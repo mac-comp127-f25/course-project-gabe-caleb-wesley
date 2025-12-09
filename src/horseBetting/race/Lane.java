@@ -18,7 +18,7 @@ public class Lane {
     public Lane(int index) {
         double height = (RaceManager.RACE_HEIGHT/RaceManager.numLanes)*(index+0.5);
         horse = new Horse(height);
-        divider = new Line(0, height + 20, RaceManager.RACE_WIDTH, height + 20);
+        divider = new Line(0, height + 20, RaceManager.RACE_WIDTH - 1, height + 20);
         divider.setStrokeColor(Color.WHITE);
 
         double interactableProgress = 0;
@@ -29,7 +29,7 @@ public class Lane {
             } else {
                 interactables.put(interactableProgress, new Obstacle());
             }
-            interactables.get(interactableProgress).getGraphic().setCenter(interactableProgress * (RaceManager.RACE_WIDTH - 20) + 10, height);
+            interactables.get(interactableProgress).getGraphic().setCenter(interactableProgress * (RaceManager.RACE_WIDTH - 90) + 70, height);
         }
     }
 

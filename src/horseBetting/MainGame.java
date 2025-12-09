@@ -16,14 +16,13 @@ public class MainGame {
     private CanvasWindow canvas = new CanvasWindow("Race", CANVAS_WIDTH, CANVAS_HEIGHT);
     private GamblingManager manager = new GamblingManager();
     private RaceManager race = raceSetup(canvas, manager);
+    private ArrayList<Lane> lanes = race.getLanes();
     private TextField selectHorse = addSelectHorse(canvas);
     private TextField bet = addBet(canvas);
     private boolean raceInProgress = false;
     private int x = 60;
 
     public MainGame() {
-        ArrayList<Lane> lanes = race.getLanes();
-
         Button go = new Button("Go!");
         go.setCenter(640, 450);
         canvas.add(go);
@@ -40,9 +39,13 @@ public class MainGame {
             if (!raceInProgress) {
                 manager.getGambler().setBet(0);
                 manager.getGambler().setHorse(null);
+                canvas.removeAll();
                 race = raceSetup(canvas, manager);
+                lanes = race.getLanes();
                 selectHorse = addSelectHorse(canvas);
                 bet = addBet(canvas);
+                canvas.add(go);
+                canvas.add(reset);
             }
         });
 
@@ -56,8 +59,6 @@ public class MainGame {
                 }
                 Horse winner = race.getWinner();
                 if (winner != null) {
-                    System.out.println(manager.getGambler().getBet());
-                    System.out.println(manager.getGambler().getHorse());
                     manager.payout(winner, lanes);
                     raceInProgress = false;
                 }
@@ -114,18 +115,24 @@ public class MainGame {
         finishLine.setFillColor(Color.BLACK);
         canvas.add(finishLine);
 
+        int i = 1;
         for (Lane lane : lanes) {
             canvas.add(lane.getDivider());
+            GraphicsText number = new GraphicsText(String.valueOf(i));
+            number.setCenter(52,40 * i - 20);
+            number.setFillColor(Color.WHITE);
+            canvas.add(number);
+            i++;
         }
     }
 
     public TextField addSelectHorse(CanvasWindow canvas) {
         GraphicsText selectHorseLabel = new GraphicsText("Select Horse (1-10):");
-        selectHorseLabel.setCenter(270, 450);
+        selectHorseLabel.setCenter(285, 450);
         canvas.add(selectHorseLabel);
 
         TextField selectHorse = new TextField();
-        selectHorse.setCenter(390, 450);
+        selectHorse.setCenter(405, 450);
         canvas.add(selectHorse);
 
         return selectHorse;
@@ -133,11 +140,11 @@ public class MainGame {
 
     public TextField addBet(CanvasWindow canvas) {
         GraphicsText betLabel = new GraphicsText("Bet:");
-        betLabel.setCenter(470, 450);
+        betLabel.setCenter(480, 450);
         canvas.add(betLabel);
 
         TextField bet = new TextField();
-        bet.setCenter(535, 450);
+        bet.setCenter(545, 450);
         canvas.add(bet);
 
         return bet;
