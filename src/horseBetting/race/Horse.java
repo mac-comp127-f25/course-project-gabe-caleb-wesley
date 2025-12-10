@@ -80,7 +80,7 @@ public class Horse {
         
 
         Color hsbRed = Color.getHSBColor(hue, saturation, brightness);
-        int alpha = 120;
+        int alpha = 100;
         Color tinted = new Color(hsbRed.getRed(), hsbRed.getGreen(), hsbRed.getBlue(), alpha);
         speedBackground.setFillColor(tinted);         
         }
