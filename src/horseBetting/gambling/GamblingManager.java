@@ -54,6 +54,7 @@ public class GamblingManager {
     }
 
     public void payout(Horse winner, ArrayList<Lane> lanes) {
+        gambler.addMoney(-gambler.getBet());
         if (gambler.getHorse() == winner) {
             int index = 0;
             for (Lane lane : lanes) {
@@ -63,8 +64,6 @@ public class GamblingManager {
                 index++;
             }
             gambler.addMoney(odds.get(index) * gambler.getBet());
-        } else {
-            gambler.addMoney(-gambler.getBet());
         }
     }
 

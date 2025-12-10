@@ -2,6 +2,10 @@
 
 Info about your project goes here
 
+# Team Members
+
+Caleb, Gabe, Wesley
+
 # Project Overview 
 
 Our Horse Betting Simulation is Java-Based and designed to combine interactive gameplay with a structered object-oriented program architecture. The goal of our project is to simulate a live horse race where a player can placebets, encounter obstacles and power-ups, and watch dynamically animated horses compete in real-time.
@@ -44,12 +48,11 @@ The gambling package adds all betting components, allowing users to place wagers
 # To Dos:
 Change window size so that the race is seperately sized from the canvas.
 Add in gambling text field/button interfaces for the user X
-Employ text fields and buttons to gamble
+Employ text fields and buttons to gamble X
 Create logic for tracking gambling X
-    Make odds follow x:1 rule where favorite gets 1.2:1 and underdog gets 8:1.
+    Make odds follow x:1 rule where favorite gets 1.2:1 and underdog gets 8:1. X
 Make the background of horses reflect their speed
 Fix bug where interactables sometimes don't dissappear or leave hole in the background
-Fix OOB errors on text input
 Maybe: logic for losing if you go below $0
 Maybe: prevent overlapping interactables
 Maybe: add comments/javadoc for readability (not sure if/how much Paul wants this)
