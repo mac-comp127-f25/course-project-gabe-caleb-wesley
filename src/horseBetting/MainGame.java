@@ -75,6 +75,7 @@ public class MainGame {
 
         for (Lane lane : lanes) {
             canvas.add(lane.getHorse().getGraphic());
+            canvas.add(lane.getHorse().getSpeedBackground());
             for (Interactable interactable : lane.getInteractables().values()) {
                 canvas.add(interactable.getGraphic());
             }
