@@ -11,7 +11,7 @@ import horseBetting.gambling.GamblingManager;
 import horseBetting.race.*;
 
 public class MainGame {
-    public static final int CANVAS_WIDTH = 750;
+    public static final int CANVAS_WIDTH = 800;
     public static final int CANVAS_HEIGHT = 470;
     private CanvasWindow canvas = new CanvasWindow("Race", CANVAS_WIDTH, CANVAS_HEIGHT);
     private GamblingManager manager = new GamblingManager();
@@ -24,11 +24,11 @@ public class MainGame {
 
     public MainGame() {
         Button go = new Button("Go!");
-        go.setCenter(640, 450);
+        go.setCenter(670, 450);
         canvas.add(go);
 
         Button reset = new Button("Reset");
-        reset.setCenter(710, 450);
+        reset.setCenter(750, 450);
         canvas.add(reset);
 
         go.onClick(() -> {
@@ -69,7 +69,7 @@ public class MainGame {
     public RaceManager raceSetup(CanvasWindow canvas, GamblingManager manager) {
         RaceManager newRace = new RaceManager();
         ArrayList<Lane> lanes = newRace.getLanes();
-        x = 60;
+        x = 65;
 
         createRaceGraphics(canvas, lanes);
 
@@ -92,7 +92,7 @@ public class MainGame {
         for (int i = 0; i < 10; i++) {
             GraphicsText payout = new GraphicsText(String.valueOf(i + 1) + "| " + odds.get(i) + ":1");
             payout.setPosition(x, 425);
-            x += payout.getWidth() + 12;
+            x += payout.getWidth() + 20;
             canvas.add(payout);
         }
 
@@ -129,11 +129,11 @@ public class MainGame {
 
     public TextField addSelectHorse(CanvasWindow canvas) {
         GraphicsText selectHorseLabel = new GraphicsText("Select Horse (1-10):");
-        selectHorseLabel.setCenter(285, 450);
+        selectHorseLabel.setCenter(305, 450);
         canvas.add(selectHorseLabel);
 
         TextField selectHorse = new TextField();
-        selectHorse.setCenter(405, 450);
+        selectHorse.setCenter(425, 450);
         canvas.add(selectHorse);
 
         return selectHorse;
@@ -141,11 +141,11 @@ public class MainGame {
 
     public TextField addBet(CanvasWindow canvas) {
         GraphicsText betLabel = new GraphicsText("Bet:");
-        betLabel.setCenter(480, 450);
+        betLabel.setCenter(500, 450);
         canvas.add(betLabel);
 
         TextField bet = new TextField();
-        bet.setCenter(545, 450);
+        bet.setCenter(565, 450);
         canvas.add(bet);
 
         return bet;

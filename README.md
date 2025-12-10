@@ -53,8 +53,8 @@ Create logic for tracking gambling X
     Make odds follow x:1 rule where favorite gets 1.2:1 and underdog gets 8:1. X
 Make the background of horses reflect their speed
 Fix bug where interactables sometimes don't dissappear or leave hole in the background
-Maybe: logic for losing if you go below $0
+Maybe: logic for losing if you go below $0, also you can't bet more than you have
 Maybe: prevent overlapping interactables
 Maybe: add comments/javadoc for readability (not sure if/how much Paul wants this)
-Maybe: add extra lanes and/or lengthen race, if it's too easy
+Maybe: add extra lanes and/or lengthen race, if it's too easy X
 

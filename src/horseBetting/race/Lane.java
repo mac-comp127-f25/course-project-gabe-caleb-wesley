@@ -29,7 +29,7 @@ public class Lane {
             } else {
                 interactables.put(interactableProgress, new Obstacle());
             }
-            interactables.get(interactableProgress).getGraphic().setCenter(interactableProgress * (RaceManager.RACE_WIDTH - 90) + 70, height);
+            interactables.get(interactableProgress).getGraphic().setCenter(interactableProgress * (RaceManager.RACE_WIDTH - 120) + 70, height);
         }
     }
 
