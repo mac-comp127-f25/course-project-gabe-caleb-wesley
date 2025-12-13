@@ -20,6 +20,7 @@ public class MainGame {
     private TextField selectHorse = addSelectHorse(canvas);
     private TextField bet = addBet(canvas);
     private boolean raceInProgress = false;
+    public static boolean hasMoney = true;
     private int x = 60;
 
     public MainGame() {
@@ -50,18 +51,25 @@ public class MainGame {
         });
 
         canvas.animate(() -> {
-            if (!raceInProgress) {
-                manager.updateGambler(bet, selectHorse, lanes);
+            if (hasMoney) {
+                if (!raceInProgress) {
+                    manager.updateGambler(bet, selectHorse, lanes);
+                } else {
+                    ArrayList<Interactable> found = race.runFrame();
+                    for (Interactable hit : found) {
+                        canvas.remove(hit.getGraphic());
+                    }
+                    Horse winner = race.getWinner();
+                    if (winner != null) {
+                        manager.payout(winner, lanes);
+                        raceInProgress = false;
+                    }
+                }
             } else {
-                ArrayList<Interactable> found = race.runFrame();
-                for (Interactable hit : found) {
-                    canvas.remove(hit.getGraphic());
-                }
-                Horse winner = race.getWinner();
-                if (winner != null) {
-                    manager.payout(winner, lanes);
-                    raceInProgress = false;
-                }
+                GraphicsText brokeMessage = new GraphicsText("You are out of money! Please restart the program to play again.");
+                brokeMessage.setPosition(150, 200);
+                canvas.removeAll();
+                canvas.add(brokeMessage);
             }
         });
     }
@@ -149,6 +157,10 @@ public class MainGame {
         canvas.add(bet);
 
         return bet;
+    }
+
+    public static void broke() {
+        hasMoney = false;
     }
 
 

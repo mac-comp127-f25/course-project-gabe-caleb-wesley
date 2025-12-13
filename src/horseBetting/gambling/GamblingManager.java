@@ -3,6 +3,7 @@ package horseBetting.gambling;
 import java.util.ArrayList;
 
 import edu.macalester.graphics.ui.TextField;
+import horseBetting.MainGame;
 import horseBetting.race.Horse;
 import horseBetting.race.Lane;
 
@@ -40,7 +41,10 @@ public class GamblingManager {
 
     public void updateGambler(TextField bet, TextField horse, ArrayList<Lane> lanes) {
         try {
-            gambler.setBet((Double.parseDouble(bet.getText())));
+            Double betAmount = Double.parseDouble(bet.getText());
+            if (betAmount <= gambler.getMoney() && betAmount >= 0) {
+                gambler.setBet(betAmount);
+            }
         } catch (NumberFormatException e) {
             
         }
@@ -64,6 +68,9 @@ public class GamblingManager {
                 index++;
             }
             gambler.addMoney(odds.get(index) * gambler.getBet());
+        }
+        if (gambler.getMoney() <= 0) {
+            MainGame.broke();
         }
     }
 
