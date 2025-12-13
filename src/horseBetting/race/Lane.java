@@ -1,12 +1,11 @@
 package horseBetting.race;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 import edu.macalester.graphics.Line;
-
-import horseBetting.MainGame;
 
 public class Lane {
     private Random rand = new Random();
@@ -14,39 +13,39 @@ public class Lane {
     private Horse horse;
     private Line divider;
     private HashMap<Double, Interactable> interactables = new HashMap<Double, Interactable>();
+    private static final double LANE_HEIGHT = RaceManager.RACE_HEIGHT / RaceManager.NUM_LANES;
 
     public Lane(int index) {
-        double height = (RaceManager.RACE_HEIGHT/RaceManager.numLanes)*(index+0.5);
+        double height = LANE_HEIGHT*(index+0.5);
         horse = new Horse(height);
-        divider = new Line(0, height + 20, RaceManager.RACE_WIDTH - 1, height + 20);
+        divider = new Line(0, height + LANE_HEIGHT/2, RaceManager.RACE_WIDTH - 1, height + LANE_HEIGHT/2);
         divider.setStrokeColor(Color.WHITE);
 
-        double interactableProgress = 0;
+        double interactableProgress = 0.1;
         for (int i = 0; i < 3; i++) {
-            interactableProgress += (1 - interactableProgress) * rand.nextDouble();
+            interactableProgress += Utils.TenthToThird();
             if (rand.nextDouble() < 0.5) {
                 interactables.put(interactableProgress, new Powerup());
             } else {
                 interactables.put(interactableProgress, new Obstacle());
             }
-            interactables.get(interactableProgress).getGraphic().setCenter(interactableProgress * (RaceManager.RACE_WIDTH - 120) + 70, height);
+            interactables.get(interactableProgress).getGraphic().setCenter(interactableProgress * RaceManager.RACE_WIDTH, height);
         }
     }
 
-    public Interactable update() {
+    public ArrayList<Interactable> update() {
         double start = horse.getProgress();
         horse.move(0.1);
         double end = horse.getProgress();
-        if (end >= 1) {
-            return null;
-        }
+        ArrayList<Interactable> removed = new ArrayList<>();
+        double graphicFront = horse.getGraphic().getWidth()/RaceManager.RACE_WIDTH/2;
         for (Double key : interactables.keySet()) {
-            if (key >= start && key <= end) {
+            if (key >= start + graphicFront && key <= end + graphicFront) {
                 horse.interact(interactables.get(key));
-                return interactables.get(key);
+                removed.add(interactables.get(key));
             };
         }
-        return null;
+        return removed;
     }
 
     public Horse getHorse() {

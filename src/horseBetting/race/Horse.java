@@ -2,7 +2,6 @@ package horseBetting.race;
 
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
-import horseBetting.MainGame;
 
 import java.awt.Color;
 

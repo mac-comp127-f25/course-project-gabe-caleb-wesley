@@ -12,6 +12,10 @@ public class Utils {
         return (rand.nextDouble()*0.2) + 0.6;
     }
 
+    public static double TenthToThird() {
+        return (rand.nextDouble()*0.23333) + 0.1;
+    }
+
     public static double TwelveToFourteenTenths() {
         return (rand.nextDouble()*0.2) + 1.2;
     }

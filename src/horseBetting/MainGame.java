@@ -53,9 +53,9 @@ public class MainGame {
             if (!raceInProgress) {
                 manager.updateGambler(bet, selectHorse, lanes);
             } else {
-                Interactable found = race.runFrame();
-                if (found != null) {
-                    canvas.remove(found.getGraphic());
+                ArrayList<Interactable> found = race.runFrame();
+                for (Interactable hit : found) {
+                    canvas.remove(hit.getGraphic());
                 }
                 Horse winner = race.getWinner();
                 if (winner != null) {
