@@ -42,14 +42,28 @@ public class GamblingManager {
     public void updateGambler(TextField bet, TextField horse, ArrayList<Lane> lanes) {
         try {
             Double betAmount = Double.parseDouble(bet.getText());
-            if (betAmount <= gambler.getMoney() && betAmount >= 0) {
+            if (betAmount > gambler.getMoney()) {
+                bet.setText(gambler.getMoney() + "");
+                gambler.setBet(gambler.getMoney());
+            } else if (betAmount < 0) {
+                bet.setText("0");
+                gambler.setBet(0);
+            } else {
                 gambler.setBet(betAmount);
             }
         } catch (NumberFormatException e) {
             
         }
         try {
-            gambler.setHorse(lanes.get(Integer.parseInt(horse.getText()) - 1).getHorse());
+            Integer horseNumber = Integer.parseInt(horse.getText()) - 1;
+            if (horseNumber < 0) {
+                horse.setText("1");
+                horseNumber = 0;
+            } else if (horseNumber >= lanes.size()) {
+                horse.setText(lanes.size() + "");
+                horseNumber = lanes.size() - 1;
+            }
+            gambler.setHorse(lanes.get(horseNumber).getHorse());
         } catch (NumberFormatException e) {
 
         } catch (IndexOutOfBoundsException e) {
