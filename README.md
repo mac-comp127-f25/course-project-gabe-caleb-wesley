@@ -65,5 +65,3 @@ The gambling package adds all betting components, allowing users to place wagers
 - GamblingManager.java
     Able to determine the odds of the horses winning and affect the gambler depending on provided outcomes.
 
-# Gameflow Summary
-
