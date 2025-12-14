@@ -10,6 +10,11 @@ import edu.macalester.graphics.ui.TextField;
 import horseBetting.gambling.GamblingManager;
 import horseBetting.race.*;
 
+/**
+ * Authors: Caleb Hatlevig, Gabe Guerrero, Wesley Stone
+ * 
+ * A game of horse racing.
+ */
 public class MainGame {
     public static final int CANVAS_WIDTH = 800;
     public static final int CANVAS_HEIGHT = 470;
@@ -23,6 +28,14 @@ public class MainGame {
     public static boolean hasMoney = true;
     private int x = 60;
 
+    /**
+     * The main method where the game is actually run.
+     * Generates all the graphics for the game, 
+     * and creates logic for the buttons and text fields the user can interact with: 
+     * selecting a horse, placing a bet, starting the race, and resetting after it's over.
+     * Animates the canvas, moving the horses and removing interactables as needed.
+     * The user loses if they run out of money.
+     */
     public MainGame() {
         Button go = new Button("Go!");
         go.setCenter(670, 450);
@@ -74,6 +87,10 @@ public class MainGame {
         });
     }
 
+    /**
+     * Sets up the race. First adds the background graphics, then the game objects (horses and interactables).
+     * Then sets the odds and displays them, as well as the Gambler's current balance.
+     */
     public RaceManager raceSetup(CanvasWindow canvas, GamblingManager manager) {
         RaceManager newRace = new RaceManager();
         ArrayList<Lane> lanes = newRace.getLanes();
@@ -111,6 +128,10 @@ public class MainGame {
         return newRace;
     }
 
+    /**
+     * Generates the basic graphics for the race: the brown racetrack, white dividers, 
+     * black finish line, green betting background and numerical labels for the lanes.
+     */
     public void createRaceGraphics(CanvasWindow canvas, ArrayList<Lane> lanes) {
         Rectangle trackBackground = new Rectangle(0, 0, CANVAS_WIDTH, 400);
         trackBackground.setFillColor(Color.getHSBColor((float) 0.10, (float) 0.70, (float) 0.72));
@@ -135,6 +156,9 @@ public class MainGame {
         }
     }
 
+    /**
+     * Creates the TextField for selecting a horse to bet on.
+     */
     public TextField addSelectHorse(CanvasWindow canvas) {
         GraphicsText selectHorseLabel = new GraphicsText("Select Horse (1-10):");
         selectHorseLabel.setCenter(305, 450);
@@ -147,6 +171,9 @@ public class MainGame {
         return selectHorse;
     }
 
+    /**
+     * Creates the TextField for selecting how much money to bet.
+     */
     public TextField addBet(CanvasWindow canvas) {
         GraphicsText betLabel = new GraphicsText("Bet:");
         betLabel.setCenter(500, 450);

@@ -6,6 +6,11 @@ import horseBetting.race.Horse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Authors: Caleb Hatlevig, Gabe Guerrero, Wesley Stone
+ * 
+ * Tests of the Gambler's functionality.
+ */
 public class GamblerTest {
     private Gambler gambler = new Gambler();
 

@@ -11,6 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 
+/**
+ * Authors: Caleb Hatlevig, Gabe Guerrero, Wesley Stone
+ * 
+ * Tests of the GamblingManager's functionality.
+ */
 public class GamblingManagerTest {
     GamblingManager gamblingManager;
     RaceManager race = new RaceManager();

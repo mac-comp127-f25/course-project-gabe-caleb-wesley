@@ -1,6 +1,11 @@
 package horseBetting.race;
 import java.util.Random;
 
+/**
+ * Authors: Caleb Hatlevig, Gabe Guerrero, Wesley Stone
+ * 
+ * Shortcut methods for useful mathematical operations.
+ */
 public class Utils {
     private static Random rand = new Random();
 

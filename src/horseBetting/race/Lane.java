@@ -7,6 +7,12 @@ import java.util.Random;
 
 import edu.macalester.graphics.Line;
 
+/**
+ * Authors: Caleb Hatlevig, Gabe Guerrero, Wesley Stone
+ * 
+ * The racecourse is made up of ten horizontal lanes stacked atop one another.
+ * The lanes each have one horse and three interactables, and which interactables have been hit is tracked.
+ */
 public class Lane {
     private Random rand = new Random();
 
@@ -15,6 +21,10 @@ public class Lane {
     private HashMap<Double, Interactable> interactables = new HashMap<Double, Interactable>();
     private static final double LANE_HEIGHT = RaceManager.RACE_HEIGHT / RaceManager.NUM_LANES;
 
+    /**
+     * Constructs the Lanes, which contain a horse and three interactables, a random combination of powerups and obstacles.
+     * Also handles the graphics of the Lane dividers.
+     */
     public Lane(int index) {
         double height = LANE_HEIGHT*(index+0.5);
         horse = new Horse(height);
@@ -33,6 +43,10 @@ public class Lane {
         }
     }
 
+    /**
+     * Track when the horse hits an interactable, and record it as hit.
+     * @return Which interactables in the lane have been hit.
+     */
     public ArrayList<Interactable> update() {
         double start = horse.getProgress();
         horse.move(0.1);
