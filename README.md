@@ -35,10 +35,10 @@ There are also people who struggle with gambling. This program does make light o
 The racing logic is handled within the race package and includes multiple interconnected classes:
 
 - Horse.Java
-    Defines the horse objects in the race. Each horse has movement logic and properties that affect speed or race behavior
+    Defines the horse objects in the race. Each horse has movement logic and properties that affect speed or race behavior.
 
 - Lane.java
-    Represents each horse's racing lane and ensures spatial oranization during gameplay
+    Represents each horse's racing lane and ensures spatial oranization during gameplay.
 
 - Obstacle.java and Powerup.java
     These classes include race modifiers. Obstacles make the horse slow down, while power-ups can temporarily increase speed or provide advantages. 
